@@ -61,8 +61,8 @@ jobs:
       steps:
 
         - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: ~/deploy-test
+            # Must be absolute path or relative path from working_directory
+            at: ~/deploy-test
 
         - setup_remote_docker
 
