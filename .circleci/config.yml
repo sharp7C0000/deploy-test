@@ -45,7 +45,9 @@ jobs:
 
     deploy:
 
-       - image: google/cloud-sdk
+       docker:
+
+        - image: google/cloud-sdk
     
        working_directory: ~/repo
 
