@@ -9,11 +9,11 @@ jobs:
       # specify the version you desire here
       - image: node:8.0
         
-      - steps:
-        # ...
-        - run:
-            name: Dump Google Cloud Credentials to file
-            command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+      # - steps:
+      #   # ...
+      #   - run:
+      #       name: Dump Google Cloud Credentials to file
+      #       command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
         # ...  
       
       # Specify service dependencies here if necessary
