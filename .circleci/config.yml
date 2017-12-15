@@ -43,15 +43,26 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+       - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory
+          root: .
+          # Must be relative path from root
+          paths:
+            - .
+
   deploy-job:
 
       docker:
 
         - image: google/cloud-sdk
   
-      working_directory: ~/deploy-test
+      #working_directory: ~/deploy-test
 
       steps:
+
+        - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/deploy-test
 
         - setup_remote_docker
 
@@ -69,7 +80,7 @@ jobs:
             command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
 
         - run:
-            name: Set gcloud
+            name: Run gcloud
             command: |
               echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
               gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
@@ -80,7 +91,7 @@ jobs:
         - run: |
             ls -al
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t   gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG .
+            docker build -t   gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG /tmp/workspace/
             gcloud docker -- push gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG
 
 workflows:
