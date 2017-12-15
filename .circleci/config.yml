@@ -96,7 +96,7 @@ jobs:
               gcloud docker -- push gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG
               #kubectl run deploy-test --image=gcr.io/sharp7c0timesfour-174112/deploy-test:$TAG
               #kubectl expose deployment deploy-test --type="LoadBalancer" --port=80 --target-port=8080
-              kubectl set image deploy-test gcr.io/sharp7c0timesfour-174112/deploy-test:$TAG
+              kubectl set image deployment/deploy-test deploy-test=gcr.io/sharp7c0timesfour-174112/deploy-test:$TAG
 
 workflows:
   version: 2
