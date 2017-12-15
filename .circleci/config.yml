@@ -65,8 +65,8 @@ jobs:
               mv /tmp/docker/* /usr/bin
 
         - run:
-          name: Dump Google Cloud Credentials to file
-          command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+            name: Dump Google Cloud Credentials to file
+            command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
 
         - run:
             name: Set gcloud
