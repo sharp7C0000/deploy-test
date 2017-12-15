@@ -53,6 +53,10 @@ jobs:
 
       steps:
 
+        - run:
+          command: |
+            ls -al
+
         - setup_remote_docker
 
         - run:
