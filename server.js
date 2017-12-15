@@ -13,7 +13,7 @@ server.route({
   path:'/', 
   handler: function (request, h) {
 
-      return 'hello world';
+      return 'hello world 2';
   }
 });
 
