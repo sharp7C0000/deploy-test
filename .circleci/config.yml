@@ -77,15 +77,15 @@ jobs:
             docker build -t   gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG .
             gcloud docker -- push gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG
 
-  workflows:
-    version: 2
-    build-deploy:
-      jobs:
-        - build-job
-        - deploy-job:
-            requires:
-              - build-job
-            filters:
-              branches:
-                only: master
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build-job
+      - deploy-job:
+          requires:
+            - build-job
+          filters:
+            branches:
+              only: master
 
