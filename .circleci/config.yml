@@ -94,7 +94,7 @@ jobs:
               TAG=0.1.$CIRCLE_BUILD_NUM
               docker build -t   gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG ~/deploy-test
               gcloud docker -- push gcr.io/${GOOGLE_PROJECT_ID}/deploy-test:$TAG
-              kubectl run deploy-test --image=gcr.io/sharp7c0timesfour-174112/deploy-test:$TAG --port 80
+              kubectl run deploy-test --image=gcr.io/sharp7c0timesfour-174112/deploy-test:$TAG --port 8080
               kubectl expose deployment deploy-test --type="LoadBalancer"
 
 workflows:
