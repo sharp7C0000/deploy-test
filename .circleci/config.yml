@@ -8,14 +8,14 @@ jobs:
     docker:
       # specify the version you desire here
       - image: node:8.0
-        auth :
+        auth:
           username: _json_key
           password: $GOOGLE_AUTH
       - steps:
         # ...
         - run:
-          name: Dump Google Cloud Credentials to file
-          command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+            name: Dump Google Cloud Credentials to file
+            command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
         # ...  
       
       # Specify service dependencies here if necessary
